@@ -7,13 +7,13 @@ from rest_framework import permissions
 class UserProfileManager(BaseUserManager):
     """Manager for user profiles"""
     
-    def create_user(self,email,first_name,last_name,password=None):
+    def create_user(self,email,first_name,last_name,address,phone,password=None):
         """Create a new user profile"""
         if not email:
             raise ValueError('Users must have an email address')
         
         email = self.normalize_email(email)
-        user = self.model(email=email,first_name=first_name,last_name=last_name)
+        user = self.model(email=email,first_name=first_name,last_name=last_name,address=address,phone=phone)
         user.set_password(password)
         user.save(using=self._db)
         

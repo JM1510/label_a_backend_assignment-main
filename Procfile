@@ -1,4 +1,3 @@
-web:gunicorn autocompany.wsgi
-release:python manage.py makemigrations --noinput
-release:python manage.py collectstatic --noinput
-release:python manage.py migrate --noinput
+web: gunicorn autocompany.wsgi
+release: sh -c 'python manage.py makemigrations && python manage.py collectstatic && python manage.py migrate --noinput'
+

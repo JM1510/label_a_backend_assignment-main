@@ -15,15 +15,22 @@ A company specialised in car parts wants to modernise their company, and start s
 
 Setup
 ----------
-The assignment's code can be found on my github page, here: https://github.com/JM1510/label_a_backend_assignment-main.git
 
-To run it locally:
-1. Activate the virtual environment running `env/Scripts/activate` on the Windows terminal or `source env/bin/activate` on Unix or MacOS on the bash shell.
-2. Install the dependencies via `pip install -r requirements.txt`
-3. Check whether there are any migrations to be created by running `python manage.py makemigrations` in the terminal.
-4. Apply the migrations with the command `python manage.py migrate` in the terminal
-5. Run the server with the command `python manage.py runserver`
-6. Open the api at http://127.0.0.1:8000/api/
+To run the project locally, the virtual environment must be activated and dependencies installed. Then migrations should be created and applied. Run the server with the command `python manage.py runserver` and open the api at http://127.0.0.1:8000/api/ (or any other Django configuration you have chosen). It is also possible to run the application with postgresql rather than sqllite by creating a database (`CREATE DATABASE myautocompanydb;`) and creating a user for it (`CREATE USER autocompany WITH PASSWORD 'auto123';`), and then commenting out the following code from the `settings.py` file:
+
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'autocompanydb',
+        'USER': 'autocompany',
+        'PASSWORD': 'auto123',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
+```
+
 
 However, a faster way to test it is as a Heroku app here: https://autocompany-jb.herokuapp.com/api/
 
